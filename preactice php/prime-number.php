@@ -8,6 +8,7 @@
 <body>
 
 <h2 style="background-color:black;color:white ;text-align:center" >Prime-Number by php</h2>
+
 <form method='post'>
 Enter a number<input type="text" name="fname">
 <input type="submit" name="submit">
