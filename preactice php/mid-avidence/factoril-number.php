@@ -19,12 +19,12 @@
 <?php
 if(isset($_POST["submit"])){ 
     $num1 = $_POST["N1"];
-    $current=1;
+    
 function factorial($num1) {
     if ($num1 == 0 || $num1 == 1) {
-        return 1;
+        echo "Factorial of $num1 is:1";
     } else {
-        global $current;
+        $current=1;
         for ($i=2; $i <= $num1; $i++) { 
             $next=$i;
             $current=$current*$next;
