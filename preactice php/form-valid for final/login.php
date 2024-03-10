@@ -7,11 +7,10 @@
 	  
     if ($username=="admin" && $password=="123"){ 
 			 $_SESSION["sname"]=$username;
-       header("location:indext2.php");
+       header("location:demo.php");
   } else{ 
     $msg="Username or Password is incorrect!";
   }
-	
   }
 
 ?>

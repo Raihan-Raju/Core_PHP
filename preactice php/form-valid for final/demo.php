@@ -1,6 +1,12 @@
-
 <?php
+    session_start();
+    if(!isset($_SESSION["sname"])){
+        header("location:login.php");
+
+    }
+
     require_once("object2.php");
+    
 
     if (isset($_POST["btnSubmit"])){
         $id=$_POST["txtId"];
@@ -15,7 +21,7 @@
     }
     
     
-    ?>
+?>
 
 
 <!DOCTYPE html>
@@ -23,7 +29,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>indext2-php</title>
+    <title>Demo-php</title>
 </head>
 <body>
    
@@ -42,17 +48,22 @@
                             Phone<br/>
                             <input type="number" name="txtPhone" /><br/><br/>
                             <input type="submit" name="btnSubmit" value="Submit" />
+                        <button> <a href="logout.php">logout<a></button>
+
                         </div>
            
            </form>
 
+
       <?php
         Student::display_students();
       ?>  
-      
-      
-     
 
-<footer style= "text-align: center ";><a href="login.php"><h1>Logout</h1></a></footer>
+<!-- 
+        <footer style= "text-align: center ";>
+        <a href="login.php"><button name="sname" value="logout">Logout
+            </button></a>
+        </footer> -->
+
 </body>
 </html>

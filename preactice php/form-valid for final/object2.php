@@ -30,7 +30,7 @@ class Student{
    public static function display_students(){
       $students=file(self::$file_path);
 
-      echo "<b> ID (Identyfication number) |   Name     |    COURSE   |    PHONE      </b> <br/>";
+      echo "<b> ID (Identity) |   Name     |    COURSE   |    PHONE      </b> <br/>";
       foreach ($students as $student1) {
         list($id,$name,$coure,$phone)=explode(",",trim($student1));
         echo "$id | $name  | $coure | $phone <br/>";
