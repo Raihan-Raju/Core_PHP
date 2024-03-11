@@ -34,6 +34,10 @@
 <body>
    
 
+      <div style= "text-align: center ; background-color: rgb(7, 126, 244);">
+         <h1 style="color:white";>Welcome  Welcome<br> School of Raihan <br> pleace Input Your Data</h1>
+         <img src="F-10132 (1).jpg" alt="Raihan" style="width:100px;height:100px;">
+      </div>
 
  <h3 style= "text-align: center ";>PHP-- OOP oriented form</h3> <hr>
           <form action="#" method="post">
