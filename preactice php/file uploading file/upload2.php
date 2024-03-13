@@ -1,9 +1,9 @@
   <?php
-    if(isset($_POST['btnsubmit'])){
+   if(isset($_POST['btnsubmit'])){
       $tmp_name=$_FILES["myfile"]["tmp_name"];
       $name=$_FILES['myfile']['name'];
       
-        copy($tmp_name,"image/".$name);
+       copy($tmp_name,"image/".$name);
         
     }
   ?>
