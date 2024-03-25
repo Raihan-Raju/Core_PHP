@@ -1,4 +1,4 @@
-<?php
+ <?php
 class Student{
    private $id;
    private $name;
