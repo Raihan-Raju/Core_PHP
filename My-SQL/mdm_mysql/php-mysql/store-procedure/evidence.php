@@ -4,7 +4,7 @@ $db = new mysqli('localhost','root','','company');
 if(isset($_POST['btnSubmit'])){
 	$mname = $_POST['mname'];
 	$contact = $_POST['contact'];
-	$db->query(" call pro_manufacture('$mname','$contact') ");
+	$db->query(" call pro_manufacturer('$mname','$contact') ");
 }
 
 if(isset($_POST['addProduct'])){
