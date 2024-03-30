@@ -33,7 +33,7 @@ if ($_GET['id']){
 <html lang="en">
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Document</title>
+    <title>edit php</title>
 </head>
 <body>
    <div class="container"> 
@@ -41,10 +41,12 @@ if ($_GET['id']){
         <div class="col-sm-3"></div>
         <div class="col-sm-6 pt-4 mt-4 border border-success"> 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST"> 
+        ID:<br>
+        <input type ="number" name ="id" value="<?php echo $id ?>"><br><br>
         Name:<br>
         <input type ="text" name ="name" value="<?php echo $name ?>"><br><br>
         Age:<br>
-        <input type ="text" name ="age" value="<?php echo $age ?>"><br><br>
+        <input type ="number" name ="age" value="<?php echo $age ?>"><br><br>
         Email:<br>
         <input type ="email" name ="email" value="<?php echo $email ?>"><br><br>
         <input type ="text" name ="id" value =" <?php echo $id ?>" hidden><br><br>

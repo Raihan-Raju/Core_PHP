@@ -1,0 +1,13 @@
+ BEGIN
+  INSERT INTO 
+   manufacturer(name,contact)
+   values(mname,mcontact);
+
+ END
+
+
+
+CREATE VIEW view_companydata 
+AS SELECT manufacturer.id,manufacturer.name,manufacturer.contact,product.id pid,product.name pname,product.price,product.Manufacturer_Name
+FROM (manufacturer,product)
+WHERE manufacturer.id = product.id;
