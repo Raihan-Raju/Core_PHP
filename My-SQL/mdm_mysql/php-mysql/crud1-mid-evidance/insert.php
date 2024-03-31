@@ -1,12 +1,12 @@
 <?php 
-$conn = mysqli_connect('localhost','root','','testclass');
+$conn = mysqli_connect('localhost','root','','demo1');
 if (isset($_POST['submit'])){
     $id = $_POST['id']; 
     $name = $_POST['name'];
     $age = $_POST['age'];
      $email = $_POST['email'];
 
-     $sql = "INSERT INTO users(id,name,age,email) VALUES ('$id','$name','$age','$email')";
+     $sql = "INSERT INTO t_user1(id,name,age,email) VALUES ('$id','$name','$age','$email')";
      if(mysqli_query($conn, $sql) == TRUE){ 
         echo "DATA INSERTED";
         header('location:view.php');

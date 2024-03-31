@@ -1,9 +1,9 @@
 <?php 
-$conn = mysqli_connect('localhost','root','','testclass');
+$conn = mysqli_connect('localhost','root','','demo1');
 if (isset($_GET['deleteid'])){ 
     $deleteid = $_GET['deleteid'];
 
-     $sql = "DELETE FROM  users WHERE id = $deleteid";
+     $sql = "DELETE FROM  t_user1 WHERE id = $deleteid";
      if(mysqli_query($conn, $sql) == TRUE){ 
         header('location:view.php');
      }
@@ -29,7 +29,7 @@ if (isset($_GET['deleteid'])){
             <h3 class="text-center p-2 m-2 bg-success text-white">User Information</h3>
            
             <?php 
-            $sql = 'SELECT * FROM users';
+            $sql = 'SELECT * FROM t_user1';
             
             $query = mysqli_query($conn, $sql);
             echo "<table class='table table-success'>
