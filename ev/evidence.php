@@ -1,25 +1,21 @@
 <?php 
-$db = new mysqli('localhost','root','','company');
+$db = new mysqli('localhost','root','','testevidence');
+
+
 
 if(isset($_POST['btnSubmit'])){
 	$mname = $_POST['mname'];
 	$contact = $_POST['contact'];
-	$db->query(" call pro_manufacture('$mname','$contact') ");
+	$adress = $_POST['adress'];
+	$db->query(" call add_into_manufac('$mname','$adress','$contact') ");
 }
 
 if(isset($_POST['addProduct'])){
 	$pname = $_POST['pname'];
 	$price = $_POST['price'];
-	$mid = $_POST['manufac'];
-	$db->query(" call pro_product('$pname','$price','$mid') ");
+	$id = $_POST['manufac'];
+	$db->query(" call insert_to_product('$pname','$price','$id') ");
 }
-
-
-if(isset($_POST['delbtn'])){
-	$tri=$_POST['trigger'];
-	$db->query("delect FROM product where id ='$tri'" );
-}
-
 ?>
 
 <h3>Manufacturer table:</h3>
@@ -58,14 +54,16 @@ if(isset($_POST['delbtn'])){
 		<tr>
 			<td><label for="manufac">Manufacturer Name</label></td>
 			<td>
-				<select name="manufac">
+			<select name="manufac">
 					<?php 
-						$manufac = $db->query("select * from manufacturer");
-						while(list($_mid,$_mname) = $manufac->fetch_row()){
-							echo "<option value='$_mid'>$_mname</option>";
+						$data= $db->query("select * from manufacturerev");
+					
+						while(list($id,$name) = $data->fetch_row()){
+							echo "<option value='$id'>$name</option>";
 						}
 					?>
 				</select>
+				
 			</td>
 		</tr>
 		<tr> 
@@ -73,66 +71,49 @@ if(isset($_POST['delbtn'])){
 			<td><input type="submit" name="addProduct" value="submit" /></td>
 		</tr>
 	</table>
-</form> <hr>
-
-
-
-
+</form>
 
 <h3>View Product</h3>
 
 <table border="1" style="border-collapse: collapse;" > 
-
- <tr>
-	<th>ID</th>
-	<th>Name</th>
-	<th>Contact</th>
-	<th>pid</th>
-	<th>pname</th>
+<thead>
+<tr>
+	<th>Id</th>
+	<th>Product Name</th>
 	<th>price</th>
+	<th>Manufacturer id</th>
 	<th>Manufacturer Name</th>
+	<th>Manufacturer Contact</th>
+	<th>Manufacturer Adress</th>
+	
  </tr>
-
-
+</thead>
  <?php
-   $show = $db->query("SELECT * FROM view_companydata");
-   while(list($id,$Name,$contact,$pid,$pname,$price,$manufactura_name)=$show->fetch_row()){
-
+   $show = $db->query("select * from view_product");
+   while(list($id,$Name,$price,$Manufacturer_id,$Mname,$Mcontact,$Madress)=$show->fetch_row()){
 	echo " <tr>
 			<td>$id</td>
 			<td>$Name</td>
-			<td>$contact</td>
-			<td>$pid</td>
-			<td>$pname</td>
 			<td>$price</td>
-			<td>$manufactura_name</td>
+			<td>$Manufacturer_id</td>
+			<td>$Mname</td>
+			<td>$Mcontact</td>
+			<td>$Madress</td>
+			
 	    </tr>";
    }
  ?>
+					</table>
 
 
-</table>
-
-		<form action="#" method = "POST">
+					<form action="#" method = "POST">
 				<table>
 					
 					<tr>
 						<td><label for="trigger">manufacturer</label></td>
 						<td>
 
-                            <select name="trigger" >
-
-
-                                     <?php
-									      $_ptrigger = $db->query("select * FROM manufacturer");
-										  while(list($pid,$pname)=$_ptrigger->fetch_row()){
-											echo "<option value='$pid'>$pname</option>";
-										  }
-
-									 ?>
-
-
-							</select>
+                           
 
 						</td>
 					</tr>
@@ -142,8 +123,3 @@ if(isset($_POST['delbtn'])){
 				</table>
 
 		</form>
-
-
-
-
-

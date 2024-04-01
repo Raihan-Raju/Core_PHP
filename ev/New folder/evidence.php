@@ -4,7 +4,7 @@ $db = new mysqli('localhost','root','','company');
 if(isset($_POST['btnSubmit'])){
 	$mname = $_POST['mname'];
 	$contact = $_POST['contact'];
-	$db->query(" call pro_manufacture('$mname','$contact') ");
+	$db->query(" call pro_manufacturer('$mname','$contact') ");
 }
 
 if(isset($_POST['addProduct'])){
@@ -12,12 +12,6 @@ if(isset($_POST['addProduct'])){
 	$price = $_POST['price'];
 	$mid = $_POST['manufac'];
 	$db->query(" call pro_product('$pname','$price','$mid') ");
-}
-
-
-if(isset($_POST['delbtn'])){
-	$tri=$_POST['trigger'];
-	$db->query("delect FROM product where id ='$tri'" );
 }
 
 ?>
@@ -32,10 +26,6 @@ if(isset($_POST['delbtn'])){
 		<tr>
 			<td><label for="contact">Contact</label></td>
 			<td><input type="text" name="contact" /></td>
-		</tr>
-		<tr>
-			<td><label for="adress">Address</label></td>
-			<td><input type="text" name="adress" /></td>
 		</tr>
 		<tr> 
 			<td></td>
@@ -111,37 +101,50 @@ if(isset($_POST['delbtn'])){
  ?>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Manufacturer</th>
+		<th>Contact</th>
+	</tr>
+
+		// $product = $db->query(" select * from view_product ");
+		// while(list($_id,$_name,$_price,$_mname,$_mcont) = $product->fetch_row()){
+		// 	echo "<tr> 
+		// 			<td>$_id</td>
+		// 			<td>$_name</td>
+		// 			<td>$_price</td>
+		// 			<td>$_mname</td>
+		// 			<td>$_mcont</td>
+		// 		</tr>";
+		// }
+	
+	//?> -->
+
+	
+
+
 </table>
-
-		<form action="#" method = "POST">
-				<table>
-					
-					<tr>
-						<td><label for="trigger">manufacturer</label></td>
-						<td>
-
-                            <select name="trigger" >
-
-
-                                     <?php
-									      $_ptrigger = $db->query("select * FROM manufacturer");
-										  while(list($pid,$pname)=$_ptrigger->fetch_row()){
-											echo "<option value='$pid'>$pname</option>";
-										  }
-
-									 ?>
-
-
-							</select>
-
-						</td>
-					</tr>
-						<tr>
-							<td><input type="submit" name="delbtn" value="delete"></td>
-						</tr>
-				</table>
-
-		</form>
 
 
 
