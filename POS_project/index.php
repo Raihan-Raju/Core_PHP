@@ -32,12 +32,14 @@
 
         .container {
             width: 100%;
-            max-width: 400px; /* Limiting container width for better readability */
+            max-width: 450px; /* Limiting container width for better readability */
             margin-left: auto; /* Pushes the container to the right */
             background-color: #81cbe9a2;
             border-radius: 30px;
             padding: 20px;
+           
             float: right;
+            margin: 30px 70px 0px 30px;
         }
 
         .container h2 {
@@ -65,7 +67,7 @@
 
         button {
             border: none;
-            color:white;
+            color: #fff;
             font-size: 15px;
             padding: 10px;
             cursor: pointer;
@@ -73,10 +75,9 @@
             border-radius: 5px;
             background: linear-gradient(to right, rgb(76, 0, 255), rgb(0, 217, 255));
         }
-
         button a{
             color:white;
-            list-style-type: none;
+            text-decoration:none;
         }
 
         .newUser {
@@ -104,7 +105,7 @@
             <input type="text" name="username" id="userId">
             <label for="password"><span>Password</span></label>
             <input type="password" name="password" id="password">
-            <button><a href="dashboard.php">Login</a></button>
+           <button><a href="dashboard.php"> Login</a></button>
         </form>
         <p class="newUser">
             Not a member? <span>Signup now</span>
