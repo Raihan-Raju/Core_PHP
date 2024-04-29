@@ -1,3 +1,54 @@
+
+
+<?php
+session_start();
+
+// Database connection parameters
+$servername = "localhost";
+$username = "your_username";
+$password = "your_password";
+$database = "pos_project"; // Database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if(isset($_POST["btnLogin"])){
+    $username = $_POST["txtUsername"];
+    $password = $_POST["txtPassword"];
+    
+    // Prepare SQL statement with parameterized query to prevent SQL injection
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username=?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    // Check if credentials are found
+    if($result->num_rows == 1){
+        $row = $result->fetch_assoc();
+        if(password_verify($password, $row['password'])) {
+            $_SESSION["sname"] = $username;
+            header("location:dashboard.php");
+            exit();
+        } else {
+            $msg = "Username or Password is incorrect!";
+        }
+    } else {
+        $msg = "Username or Password is incorrect!";
+    }
+} 
+
+// Close connection
+$conn->close();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,13 +151,20 @@
     </div>
 
     <div class="container">
+
+         <?php
+            echo isset($msg)?$msg:"";
+          ?>
+
         <h2>Login Form</h2>
-        <form action="" class="form">
-            <label for="userId"><span>Email or Phone</span></label>
-            <input type="text" name="username" id="userId">
+        <form action="#" method="post" class="form">
+            <label for="userId"><span>User name</span></label>
+            <input type="text" name="txtUsername" id="userId">
             <label for="password"><span>Password</span></label>
-            <input type="password" name="password" id="password">
-           <button><a href="dashboard.php"> Login</a></button>
+            <input type="password" name="txtPassword" id="password">
+            <div>
+            <input type="submit" value="Log In" name="btnLogin" />
+        </div>
         </form>
         <p class="newUser">
             Not a member? <span>Signup now</span>

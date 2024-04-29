@@ -1,3 +1,36 @@
+<?php session_start();
+  
+  if(isset($_POST["btnLogin"])){
+	  
+	  $username=$_POST["txtUsername"];
+	  $password=$_POST["txtPassword"];
+	  
+	  $file=file("auth.txt");
+	  
+	  foreach($file as $line){
+		  
+		  list($_username,$_password)=explode(",",$line);
+		  
+		  if(trim($_username)==$username && trim($_password)==$password){
+			  
+			
+			 $_SESSION["sname"]=$username;
+			
+			 header("location:dashboard.php");
+			  
+		  }else{
+			  
+			  $msg="Username or Password is incorrect!";
+		  }
+		  
+	  }
+	  
+  }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,12 +134,22 @@
 
     <div class="container">
         <h2>Login Form</h2>
+       
+       
+       <?php
+              echo isset($msg)?$msg:"";
+         ?>
+
         <form action="" class="form">
-            <label for="userId"><span>Email or Phone</span></label>
-            <input type="text" name="username" id="userId">
+            <label for="userId"><span>Username</span></label>
+            <input type="text" name="txtUsername" id="userId">
             <label for="password"><span>Password</span></label>
-            <input type="password" name="password" id="password">
-           <button><a href="dashboard.php"> Login</a></button>
+            <input type="password" name="txtPassword" id="password">
+            
+            <div>
+            <input type="submit" value="Log In" name="btnLogin" />
+            </div>
+
         </form>
         <p class="newUser">
             Not a member? <span>Signup now</span>
