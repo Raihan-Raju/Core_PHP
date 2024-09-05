@@ -9,9 +9,9 @@ if (isset($_POST['submit'])) {
    $con->query("INSERT INTO student(name, phone, email)VALUE('$name', '$phone', '$email')");
    ?>;
 
-<!-- <script>
+<script>
   window.location.assign("show.php");
-</script> -->
+</script>
 <?php
 }
 ?>
